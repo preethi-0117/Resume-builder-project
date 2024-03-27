@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color:white
+        }
+    </style>
+</head>
+<body>
+    <h1>Resume List</h1>
+</body>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
+      authDomain: "resumes-c23f8.firebaseapp.com",
+      projectId: "resumes-c23f8",
+      storageBucket: "resumes-c23f8.appspot.com",
+      messagingSenderId: "156434018847",
+      appId: "1:156434018847:web:acd23159dd1b48da375b2a"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    
+      // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
+    
+
+  
+    
+    let params = new URLSearchParams(document.location.search);
+    let id = params.get("id");
+
+    getDocs(collection(db,"register")).then(docSnap=>{
+        let users=[]
+    docSnap.forEach((doc)=>{
+        users.push({...doc.data(),id:doc.id})
+    })
+           console.log(users)
+
+
+let existing_data=localStorage.getItem("userdatas")
+let converted=JSON.parse(existing_data)
+
+let params = new URLSearchParams(document.location.search);
+let firebaseid = params.get("id");
+
+
+    if (converted['id']==firebaseid){
+    window.location=`resumes.html?id=${firebaseid}`
+}
+
+else{
+        window.location="login.html"
+    }
+}
+
+    )
+
+
+</script>
+</html>

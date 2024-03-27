@@ -1,0 +1,419 @@
+<html>
+    <head>
+      <script src="resumes.js" type="text/javaScript"></script>
+      <style>
+
+#saveResume {
+ background-color: #eee;
+ border: none;
+ padding: 1rem;
+ font-size: 1rem;
+ width: 10em;
+ border-radius: 1rem;
+ color: black;
+ box-shadow: 0 0.4rem #dfd9d9;
+ cursor: pointer;
+}
+
+
+#saveResume:active {
+ color: white;
+ box-shadow: 0 0.2rem #dfd9d9;
+ transform: translateY(0.2rem);
+}
+
+
+#saveResume:hover:not(:disabled) {
+ background:black;
+ color: white;
+ text-shadow: 0 0.1rem #bcb4b4;
+}
+
+
+#saveResume:disabled {
+ cursor: auto;
+ color: grey;
+}
+
+
+        *{
+            margin:0;
+            padding:0;
+        }
+
+      .main{
+        margin-left:25px;
+        margin-top: 10px;
+        display:flex;
+        
+    }
+    body{
+        background-color:plum ;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+  input{
+    padding:5px 5px;
+  }
+    
+    
+    .input_container{
+        padding:5px;
+        font-weight: bold;
+        font-size: large;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        align-items: center;
+        margin-left: -250px;
+        margin-left: 30px;
+        position:relative;
+       
+    }
+
+    div{
+        align-items:center;
+        justify-content:space-evenly;
+    }
+    
+    .code_preview{
+        color:purple;
+        
+    }
+    input{
+        padding-top:10px; 
+    }
+
+    .first{
+        margin-top: -30px;
+        margin-left: 350px;
+        width:100px;
+        height:30px
+
+    }
+
+label{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+input{
+    margin-top:-25px;
+    border-radius:20px;
+    padding:20px;
+  
+    
+}
+
+/* #saveResume {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#saveResume:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+} */
+      
+h1{
+ /* margin-left: 380px;*/
+  margin-top: 50px; 
+ text-align: center;
+
+ 
+}
+    /* 
+    #saveResume{
+        background-color: cyan;
+        box-shadow: 0 0 5px cyan,
+        0 0 25px cyan;
+    }
+    
+    #saveResume:hover{
+        box-shadow: 0 0 5px cyan,
+        0 0 25px cyan , 0 0 50px cyan,
+        0 0 100px cyan, 0 0 200px cyan;
+    } */
+
+    .object-container{
+        display: flex;
+      
+    }
+   .main{
+    display:flex;
+  
+    /* width:900px;
+    position:relative; */
+   }
+.sub{
+    background-color: white;
+    width:900px;
+    color:black;
+    margin-top: -985px;
+
+    
+   
+}
+.code_preview{
+    background-color: black;
+    color:violet;
+    width:500px;
+    height:700px;
+    margin-bottom: 2110px;
+    overflow-y: scroll;
+}
+
+#title{
+    
+    margin-left: 700x;
+}
+
+hr{
+  margin-top: 70px;
+  margin-left: -170px;
+  
+}
+    </style>
+    
+    </head>
+     
+    
+    <body>
+   <div class="main">
+    <div class="sub">
+    <form class="container">
+        <h1>RESUME</h1>
+        <br><br>
+
+
+        <div class="input_container">
+          <label>Resume Title</label><hr style="width:70%;">
+           <input type="text" placeholder="Enter resume title" onkeyup="gen(this,'title')"/>
+            </div><br>
+        
+        <div class="input_container">
+        <label>Name</label>
+        <input type="text" placeholder="Enter name" onkeyup="gen(this,'name')"/>
+        </div><br>
+
+      
+         <div class="input_container">
+        <label>Email</label>
+        <input type="email" placeholder="Enter email"  onkeyup="gen(this,'email')">
+        </div><br>
+        
+        <div class="input_container">
+            <label>Phone</label>
+            <input type="text" placeholder="Enter Phone number" onkeyup="gen(this,'phone')">
+            </div><br>
+        <div class="input_container">
+                <label>Address</label>
+                <input type="text" placeholder="Enter Address"  onkeyup="gen(this,'address')">
+                </div><br>
+                <div class="input_container">
+                    <label>LinkedIn</label>
+                    <input type="text" placeholder="Enter LinkedIn"  onkeyup="gen(this,'linkedin')">
+                    </div><br>
+
+                    <div class="input_container">
+                        <label>Github</label>
+                        <input type="text" placeholder="Enter Github"  onkeyup="gen(this,'github')"><br><br>
+                        </div>
+
+                        <div class="input_container">
+                            <label>Summary</label>
+                            <input type="text" placeholder="Enter summary"  onkeyup="gen(this,'summary')">
+                        </div><br>
+
+                        <br>
+
+        <div class="input_container">
+                <label id="title">Hard skills</label>
+                <input type="text" id="hard_skill" placeholder="Enter Hard skills">
+                <button class="first" type="button" onclick="AddArrValue('hard_skills','hard_skill')">Add</button>
+        </div><br>
+        <br>
+
+        
+      
+        <div class="input_container">
+            <label id="title">Soft skills</label>
+            <input type="text" id="soft_skill" placeholder="Enter Soft skills">
+            <button class="first" type="button" onclick="AddArrValue('soft_skills','soft_skill')">Add</button>
+    </div><br>
+       
+       
+    <div class="input_container">
+        <label id="title">Languages_known</label>
+        <input type="text" id="languages_known" placeholder="Enter languages">
+        <button  class="first" type="button" onclick="AddArrValue('languages_known','languages_known')">Add</button>
+</div><br>
+<br>
+
+
+<div class="input_container">
+    <label id="title">Hobbies</label>
+    <input type="text" id="hobby" placeholder="Enter hobbies">
+    <button class="first" type="button" onclick="AddArrValue('hobbies','hobby')">Add</button>
+</div><br>
+<br>            
+        
+        
+        <h2>Certificates</h2>
+        <div class="object_container">
+            <label>Course name</label>
+            <input type="text" placeholder="Enter course name"  onkeyup="gen(this,'certificates',false,0,'course_name')">
+     
+            <label>Year</label>
+            <input type="number" placeholder="Enter year" onkeyup="gen(this,'certificates',false,0,'year')">
+        </div><br>
+
+        <div class="object_container">
+            <label>Course name</label>
+            <input type="text" placeholder="Enter course name" onkeyup="gen(this,'certificates',false,1,'course_name')">
+       
+       
+            <label>Year</label>
+            <input type="number" placeholder="Enter year" onkeyup="gen(this,'certificates',false,1,'year')">
+        </div>
+         <br><br>
+
+        <h2>Education</h2>
+        <div class="object_container">
+            <label>SSLC</label>
+            <input type="text" placeholder="Enter course name"  onkeyup="gen(this,'education',false,0,'course_name')">
+            <input type="text" placeholder="Enter ins name"  onkeyup="gen(this,'education',false,0,'ins_name')">
+            <input type="number" placeholder="Enter percentage" onkeyup="gen(this,'education',false,0,'percentage')">
+            <input type="number" placeholder="Enter year of passed"  onkeyup="gen(this,'education',false,0,'year')">
+        </div>
+        <br>
+
+        <div class="object_container">
+            <label>12th</label>
+            <input type="text" placeholder="Enter course name" onkeyup="gen(this,'education',false,1,'course_name')">
+            <input type="text" placeholder="Enter ins name"  onkeyup="gen(this,'education',false,1,'ins_name')">
+            <input type="number" placeholder="Enter percentage" onkeyup="gen(this,'education',false,1,'percentage')">
+            <input type="number" placeholder="Enter year of passed"  onkeyup="gen(this,'education',false,1,'year')">
+        </div>
+        <br>
+
+        <div class="object_container">
+            <label>Degree</label>
+            <input type="text" placeholder="Enter course name"  onkeyup="gen(this,'education',false,2,'course_name')">
+            <input type="text" placeholder="Enter ins name"  onkeyup="gen(this,'education',false,2,'ins_name')">
+            <input type="number" placeholder="Enter percentage"  onkeyup="gen(this,'education',false,2,'percentage')">
+            <input type="number" placeholder="Enter year of passed"  onkeyup="gen(this,'education',false,2,'year')">
+        </div><br><br>
+
+        <h2>Projects</h2>
+        <div class="object_container">
+            <label>Project Title</label>
+            <input type="text" placeholder="Enter Project title" onkeyup="gen(this,'projects',false,0,'project_name')">
+            <label>Duration</label>
+            <input type="text" placeholder="Enter duration"  onkeyup="gen(this,'projects',false,0,'duration')">
+            <label>Team size</label>
+            <input type="text" placeholder="Enter teamsize"  onkeyup="gen(this,'projects',false,0,'team_size')">
+            <label>Organization</label>
+            <input type="text"placeholder="Enter organization"  onkeyup="gen(this,'projects',false,0,'organization')">
+        </div><br>
+        
+        <div class="object_container">
+            <label>Project Title</label>
+            <input type="text" placeholder="Enter Project title" onkeyup="gen(this,'projects',false,1,'project_name')">
+            <label>Duration</label>
+            <input type="text" placeholder="Enter duration"  onkeyup="gen(this,'projects',false,1,'duration')">
+            <label>Team size</label>
+            <input type="text" placeholder="Enter teamsize"  onkeyup="gen(this,'projects',false,1,'team_size')">
+            <label>Organization</label>
+            <input type="text"placeholder="Enter organization"  onkeyup="gen(this,'projects',false,1,'organization')">
+        </div><br><br>
+
+        <h2>Experience</h2>
+        <div class="object_container">
+            <label>Company Name</label>
+            <input type="text" placeholder="Enter company name"  onkeyup="gen(this,'experience',false,0,'company_name')">
+            <label>Duration</label>
+            <input type="text" placeholder="Enter working years"  onkeyup="gen(this,'experience',false,0,'year_of_experience')">
+        </div><br>
+
+        <div class="object_container">
+            <label>Company Name</label>
+            <input type="text" placeholder="Enter company name"  onkeyup="gen(this,'experience',false,1,'company_name')">
+            <label>Duration</label>
+            <input type="text" placeholder="Enter working years"  onkeyup="gen(this,'experience',false,1,'year_of_experience')">
+        </div><br><br><br>
+   
+
+        <div class="output">
+          <button type="button" id="saveResume" >Submit</button>
+        </div>
+        </div>
+
+        
+    </form>
+    <div class="code_preview">
+        <pre id="code">
+
+        </pre>
+        
+        </div>
+    </div>
+
+
+    </body>
+
+    <script type="module">
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
+          authDomain: "resumes-c23f8.firebaseapp.com",
+          projectId: "resumes-c23f8",
+          storageBucket: "resumes-c23f8.appspot.com",
+          messagingSenderId: "156434018847",
+          appId: "1:156434018847:web:acd23159dd1b48da375b2a"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+          // Initialize Cloud Firestore and get a reference to the service
+           const db = getFirestore(app);
+
+
+           document.getElementById("saveResume").addEventListener('click', async (e) =>{
+           const docRef= await addDoc(collection(db, "resumes"),myResume);
+           window.location=`list.html?resume_id=${docRef.id}`
+   
+
+//    if(!localStorage.getItem("userdatas")){
+//    window.location="login.html"
+
+           }
+        )
+
+
+    
+          
+      </script>
+
+
+</html>

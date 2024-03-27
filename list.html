@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List </title>
+    <script src="resumes.js" type="text/javaScript"></script>
+    <!-- <link href="list.css" rel="stylesheet"> -->
+    <style>
+
+
+      ul{
+       font-size: large; 
+       font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+       color:white;
+       
+      }
+      .container{
+        width:700px;
+        height:400px;
+        /* background:linear-gradient(90%,pink,blue,violet); */
+        background-image:url("img.jpg");
+        /* background-image: radial-gradient(circle, #e9accf, #f6afc1, #fcb5b4, #fbbdaa, #f6c6a4, #f7c4a2, #f9c29f, #fac09d, #ffb0a4, #ffa3b5, #f29ccb, #d39be2); */
+        margin-left: 380px;
+        position:relative;
+        margin-top: 150px;
+        color:white;
+      }
+
+      h1{
+        position:absolute;
+        top:20px;
+      left:220px;
+
+      }
+      ul{
+        position:absolute;
+        top:100px;
+        left:150px;
+
+      }
+
+
+     
+    </style>
+</head>
+<body>
+ 
+
+
+  <div class="container">
+  <h1>Your Resume list</h1>
+  <ul id="list">
+
+  </ul>
+  </div>
+
+
+</body>
+<!-- <script> -->
+
+
+
+<!-- </script> -->
+
+
+    <script type="module">
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc,deleteDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
+  authDomain: "resumes-c23f8.firebaseapp.com",
+  projectId: "resumes-c23f8",
+  storageBucket: "resumes-c23f8.appspot.com",
+  messagingSenderId: "156434018847",
+  appId: "1:156434018847:web:acd23159dd1b48da375b2a"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+  // Initialize Cloud Firestore and get a reference to the service
+   const db = getFirestore(app);
+
+
+  function getdoc(){
+   getDocs(collection(db,"resumes")).then(docSnap => {
+    let params=new URLSearchParams(document.location.search)
+       let id=params.get("resume_id")
+            let renderHTML=''
+            // let list=document.getElementById("list").value
+            docSnap.forEach((doc)=>{
+
+               if (id==doc.id){
+                renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a>c:\Users\preet\Downloads\chessman-is-changed-shadow-crown.jpg<button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" id=update_btn">Edit</button></a></li>`
+            }
+            document.getElementById("list").innerHTML=renderHTML
+          })
+
+        
+
+        })
+      }
+      getdoc()
+
+        
+
+    //     let experience_length=converted[index].experience.length
+
+    //     let new_experience=`<tr>
+    //     <td> <input type="text" onkeyup="storeData(this,${experience_length},'company_name','experience')"></input></td>
+    //     <td> <input type="text" onkeyup="storeData(this,${experience_length},'year_of_experience','experience')"></input></td>
+    //    <tr>`
+
+    //     document.getElementById("edit_experience").innerHTML=exit_experience + new_experience
+
+    //     converted[index].experience[experience_length]={
+    //                                             company_name:"",
+    //                                             year_of_experience:""
+    //                                             }
+
+
+    //     localStorage.setItem("detail",JSON.stringify(converted))
+ 
+    //  let params = new URLSearchParams(document.location.search);
+    // let id1 = params.get("id");
+
+    // deleteDoc(doc(db,"resumes",id1))
+
+    function deleteData(dataid){
+
+    deleteDoc(doc(db,"resumes",dataid))
+    getdoc()
+
+    }
+   
+
+   window.deleteData=deleteData
+
+
+  //  deleteData()
+          
+     </script>
+</html>

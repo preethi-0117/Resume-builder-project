@@ -1,0 +1,320 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="resumes.js" type="text/javaScript"></script>
+   
+<style>
+
+        body{
+            background-color:palevioletred
+        }
+
+       
+    </style>
+</head>
+<body>
+   
+   
+    <h1>View Resume</h1>
+
+    <!-- <h4 id="view_all"></h4> -->
+
+ <label><h4>Title</h4></label>
+<h5 id="title"></h5>
+
+<label><h4>Name</h4></label>
+<h5 id="name"></h5>
+
+<label><h4>Email</h4></label>
+<h5 id="email"></h5><br<br>
+
+<label><h4>Contact</h4></label>
+<h5 id="phone"></h5>
+
+<label><h4>Address</h4></label>
+<h5 id="address"></h5>
+
+<label><h4>LinkedIn</h4></label>
+<h5 id="linkedin"></h5>
+
+<label><h4>Github</h4></label>
+<h5 id="github"></h5>
+
+<label><h4>Summary</h4></label>
+<h5 id="summary"></h5>
+
+<h4>Hard Skills</h4>
+    <ul id="hardskill">
+
+    </ul>
+
+    <h4>Soft Skills</h4>
+    <ul id="softskill">
+
+    </ul>
+
+  
+
+
+
+    <h4>Languages_known</h4>
+    <ul id="view_language"></ul>
+
+    <h4>Hobbies</h4>
+    <ul id="view_hobby">
+
+
+    </ul>
+
+<label><h4>Education</h4></label>
+<table border="1">
+   
+<thead>
+    <th>Course_name</th>
+    <th>Inst_name</th>
+    <th>Percentage</th>
+    <th>Year</th>
+</thead>
+<tbody id="trs">
+
+</tbody>
+</table><br>
+
+ <h4>Projects</h4>
+<table border="1">
+    <thead>
+        
+        <th>Project_title</th>
+        <th>Duration</th>
+        <th>Team size</th>
+        <th>Organization</th>
+    </thead>
+    <tbody id="project">
+    
+    </tbody>
+    </table><br><br>
+
+   <h4>Experience</h4>
+    <table border="1">
+        <thead>
+            <th>Company Name</th>
+            <th>Year_of_Experience</th>
+        </thead>
+        <tbody id="experience">
+
+        </tbody>
+    </table><br><br>
+
+    <h4>Certificates</h4>
+    <table border="1">
+        <thead>
+            <th>course_name</th>
+            <th>year</th>
+        </thead>
+        <tbody id="view_certificates">
+
+        </tbody>
+    </table>
+
+
+
+   
+
+
+    <ul> <li><a href="#" onclick="gototemplate(1)">Template 1</a></li>
+         <li><a href="#" onclick="gototemplate(2)">Template 2</a></li>
+         <li><a href="#" onclick="gototemplate(3)">Template 3</a></li>
+         <li><a href="#" onclick="gototemplate(4)">Template 4</a></li>
+         <!-- <li><a href="#" onclick="goToTemplate(5)">Template 5</li>  -->
+    </ul>
+    <button type="button" onclick="removeData()" >Logout</button>
+</body>
+
+<script>
+let idparam = new URLSearchParams(document.location.search);
+let id1 = idparam.get("id");
+
+    
+function gototemplate(template_id){
+    if(template_id==1){
+        window.location=`template_1/index.html?id=${id1}`
+        
+    }
+    else if(template_id==2){
+        window.location=`template_2/index.html?id=${id1}`
+
+    }
+    else if(template_id==3){
+        window.location=`template_3/index.html?id=${id1}`
+
+    }
+
+    else if(template_id==4){
+        window.location=`template_4/index.html?id=${id1}`
+    }
+    
+}
+
+function removeData(){
+    localStorage.removeItem("userdatas")
+    location="login.html"
+}
+
+</script>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
+      authDomain: "resumes-c23f8.firebaseapp.com",
+      projectId: "resumes-c23f8",
+      storageBucket: "resumes-c23f8.appspot.com",
+      messagingSenderId: "156434018847",
+      appId: "1:156434018847:web:acd23159dd1b48da375b2a"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    
+      // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(app);
+    
+
+    let params = new URLSearchParams(document.location.search);
+    let id = params.get("id");
+
+    
+
+    
+
+    getDocs(collection(db,"resumes")).then(docSnap=>{
+        docSnap.forEach((doc)=>{
+            if(id==doc.id){
+                let resumeData=doc.data()
+                document.getElementById("title").innerHTML= resumeData.title
+                document.getElementById("name").innerHTML= resumeData.name
+                document.getElementById("email").innerHTML= resumeData.email
+                document.getElementById("phone").innerHTML= resumeData.phone
+                document.getElementById("address").innerHTML= resumeData.address
+              
+                document.getElementById("summary").innerHTML= resumeData.summary
+                document.getElementById("linkedin").innerHTML= resumeData.linkedin
+                document.getElementById("github").innerHTML= resumeData.github
+                
+               
+               
+let trs=""
+
+for (let each of resumeData.education){
+    trs=trs + `<tr> 
+        <td> ${each.course_name}</td>
+        <td> ${each.ins_name}</td>
+        <td> ${each.percentage}</td>
+        <td> ${each.year}</td>
+        </tr>`
+        
+    }
+    document.getElementById("trs").innerHTML=trs
+
+// //to show certification in view html
+
+let certify="" 
+
+for (let each of resumeData.certificates){
+    certify= certify + `<tr>
+        <td>${each.course_name}</td>
+        <td>${each.year}</td>
+        </tr>`
+}
+
+document.getElementById("view_certificates").innerHTML=certify
+
+// //to show projects value in view html 
+
+let project=""
+
+for (let each of resumeData.projects){
+    project=project + `<tr>
+        <td>${each.project_name}</td>
+        <td>${each.duration}</td>
+        <td>${each.team_size}</td>
+        <td>${each.organization}</td>
+        </tr>`
+    }
+
+   document.getElementById("project").innerHTML=project
+
+
+// //to show experience value in view html
+
+let experienced=""
+
+for (let each of resumeData.experience){
+    experienced=experienced + `<tr>
+        <td>${each.company_name}</td>
+        <td>${each.year_of_experience}</td>
+        </tr>`
+}
+
+document.getElementById("experience").innerHTML=experienced
+
+//to show skills in view html
+
+let hardskill=""
+
+for (let each of resumeData.hard_skills){
+    hardskill= hardskill + `<li>${each}</li>`
+}
+
+document.getElementById("hardskill").innerHTML=hardskill
+
+let softskill=""
+
+for (let each of resumeData.soft_skills){
+    softskill= softskill + `<li>${each}</li>`
+}
+
+document.getElementById("softskill").innerHTML=softskill
+
+//to show hobbies in view page
+
+let hobby=""
+
+for (let each of resumeData.hobbies){
+    hobby= hobby + `<li>${each}</li>`
+}
+
+document.getElementById("view_hobby").innerHTML=hobby
+
+//to show language in view page
+
+let language=""
+for (let each of resumeData.languages_known){
+    language=language + `<li>${each}</li>`
+}
+document.getElementById("view_language").innerHTML=language
+
+
+
+
+            }
+        })
+       
+    })
+
+
+
+
+
+
+    </script>
+    </html>
