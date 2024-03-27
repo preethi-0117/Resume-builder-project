@@ -178,8 +178,14 @@ let data_password=document.getElementById("password").value;
 
       if (data_name=="" || data_email=="" ||  data_password==""){
             alert("Please fill empty fields")
-               window.location="register.html"
-}
+//                window.location="register.html"
+// }
+      }
+      else{
+        alert("Data submitted")
+
+        window.location="login.html"
+      }
 
 // else if(name==""){
 //        alert("Please fill empty field")
@@ -192,17 +198,11 @@ const firebaseid= await addDoc(collection(db,"register"),{
   name:data_name,
   email:data_email,
   password:data_password
+
 })
 
-alert("Data submitted")
-
-
  const eachid=firebaseid.id;
-   
-
-location=`login.html?id=${eachid}`
-
-
+  
 })
 
        </script>

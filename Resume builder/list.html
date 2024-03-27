@@ -97,7 +97,7 @@ const app = initializeApp(firebaseConfig);
             docSnap.forEach((doc)=>{
 
                if (id==doc.id){
-                renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a>c:\Users\preet\Downloads\chessman-is-changed-shadow-crown.jpg<button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" id=update_btn">Edit</button></a></li>`
+                renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" id=update_btn">Edit</button></a></li>`
             }
             document.getElementById("list").innerHTML=renderHTML
           })
