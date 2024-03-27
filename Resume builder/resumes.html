@@ -1,8 +1,11 @@
 <html>
     <head>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
       <script src="resumes.js" type="text/javaScript"></script>
       <style>
-
+/* 
 #saveResume {
  background-color: #eee;
  border: none;
@@ -35,6 +38,10 @@
  color: grey;
 }
 
+#logout{
+     
+
+}
 
         *{
             margin:0;
@@ -127,13 +134,13 @@ input{
   transform: scale(1.05) rotate(-1deg);
 } */
       
-h1{
+/* h1{ */
  /* margin-left: 380px;*/
-  margin-top: 50px; 
+  /* margin-top: 50px; 
  text-align: center;
 
  
-}
+} */
     /* 
     #saveResume{
         background-color: cyan;
@@ -147,25 +154,25 @@ h1{
         0 0 100px cyan, 0 0 200px cyan;
     } */
 
-    .object-container{
+    /* .object-container{
         display: flex;
       
     }
    .main{
-    display:flex;
+    display:flex; */
   
     /* width:900px;
     position:relative; */
-   }
+   /* }
 .sub{
     background-color: white;
     width:900px;
     color:black;
-    margin-top: -985px;
+    margin-top: -985px; */
 
     
    
-}
+/* }
 .code_preview{
     background-color: black;
     color:violet;
@@ -184,6 +191,92 @@ hr{
   margin-top: 70px;
   margin-left: -170px;
   
+}  */
+
+*{
+    margin: 0;
+    padding:0;
+    font-family: "Roboto Slab", serif;
+ 
+}
+
+
+body{
+    background-color:;
+    background:white;
+}
+
+.img1{
+    width:30px;
+    height:30px;
+    margin-left:-35px;
+}
+
+.sub{
+    border:70px solid #FFF0F5;
+    margin-top: 30px;
+    margin-left:100px;
+    margin-right:100px;
+    display:flex;
+    flex-direction: row;
+    
+}
+
+h3{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+label{
+    margin-left: 80px;
+    margin-top: 30px;
+    font-size:large
+}
+
+input{
+    width:250px;
+    height:50px;
+    border-radius: 20px;
+    border-right-style: none;
+    border-left-style: none;
+    border-top-style: none;
+    margin-left: 50px;
+    font-size: medium;
+    /* padding-bottom: 0;
+    padding-left: 10px; */
+    text-align: center;
+}
+
+.img2{
+    width:30px;
+    height:30px;
+    margin-left: -40px;
+   
+}
+
+.main{
+    display:flex;
+    flex-direction: row;
+}
+
+.input-container{
+    display: inline;
+}
+h2{
+    margin-left: 80px;
+}
+.object-container{
+  
+
+}
+
+#logout{
+    width:140px;
+    height:40px;
+    margin-top:2200px;
+    color:white;
+    background: violet;
+    border:none;
 }
     </style>
     
@@ -191,15 +284,17 @@ hr{
      
     
     <body>
-   <div class="main">
+        <div class="main">
+   
     <div class="sub">
     <form class="container">
-        <h1>RESUME</h1>
+        <img class="img1" src="resume.png"/>
+        <h3>Resume Builder</h3>
         <br><br>
 
 
         <div class="input_container">
-          <label>Resume Title</label><hr style="width:70%;">
+          <label>Resume Title</label>
            <input type="text" placeholder="Enter resume title" onkeyup="gen(this,'title')"/>
             </div><br>
         
@@ -224,12 +319,12 @@ hr{
                 </div><br>
                 <div class="input_container">
                     <label>LinkedIn</label>
-                    <input type="text" placeholder="Enter LinkedIn"  onkeyup="gen(this,'linkedin')">
+                    <input type="text" placeholder="Enter LinkedIn"  onkeyup="gen(this,'linkedin')"><img class="img2" src="linkedin.png"></input>
                     </div><br>
 
                     <div class="input_container">
                         <label>Github</label>
-                        <input type="text" placeholder="Enter Github"  onkeyup="gen(this,'github')"><br><br>
+                        <input type="text" placeholder="Enter Github"  onkeyup="gen(this,'github')"><img class="img2" src="github.png"></input><br><br>
                         </div>
 
                         <div class="input_container">
@@ -358,21 +453,27 @@ hr{
 
         <div class="output">
           <button type="button" id="saveResume" >Submit</button>
-        </div>
+       
         </div>
 
         
     </form>
-    <div class="code_preview">
-        <pre id="code">
 
-        </pre>
-        
-        </div>
+    <button type="button" onclick="removeData()" id="logout">Logout</button>
+   
     </div>
 
+    </div>
 
     </body>
+<script>
+    
+function removeData(){
+    localStorage.removeItem("userdatas")
+    location="login.html"
+}
+
+</script>
 
     <script type="module">
 

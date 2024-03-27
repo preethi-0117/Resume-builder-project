@@ -83,25 +83,25 @@ function gen(ele,key,p_key,index,c_key){
   else{
   myResume[key]=ele.value;
   }
-  preview()
+  // preview()
 }
 
 function AddArrValue(key,id){
   let value=document.getElementById(id).value;
   myResume[key].push(value)
   document.getElementById(id).value=""
-  preview()
+  // preview()
 }
 
-function preview(){
-  document.getElementById("code").innerHTML=JSON.stringify(myResume, null, 4)
-}
+// function preview(){
+//   document.getElementById("code").innerHTML=JSON.stringify(myResume, null, 4)
+// }
 
 function add(key,id,parent){
 let a=document.getElementById(id).value;
 myResume[parent][key].push(a)
 document.getElementById(id).value=""
-preview()
+// preview()
 
 }
 

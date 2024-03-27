@@ -72,27 +72,28 @@ loginThis.addEventListener('click',(e)=>{
             let password=document.getElementById("pass").value;
             
             if(email=="" || password==""){
-                alert("Please fill this Fields")
+                alert("Please fill empty Fields")
                 return
+                
             }
-            let userdata=false
+            let userdatas=false
             logpage.forEach((each)=>{
                 let datas=each.data();
 
                
                 if (email==datas.email && password==datas.password){
-                     userdata={
+                     userdatas={
                         mail:datas.email,
                         id:each.id,
                         name:datas.name
                     }
 
-                    localStorage.setItem("userdatas",JSON.stringify(userdata))
+                    localStorage.setItem("userdatas",JSON.stringify(userdatas))
                     location=`templatelist.html?id=${each.id}`
                 }
             })
 
-            if(!userdata){
+            if(!userdatas){
 
                 alert("your email or password incorrect")
 

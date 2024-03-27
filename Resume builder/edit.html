@@ -135,8 +135,19 @@
  
     
     <button type="button" id="update_Data">Update</button>
+
+    <button type="button" onclick="removeData()" >Logout</button>
 </body>
 
+<script>
+
+
+function removeData(){
+    localStorage.removeItem("userdatas")
+    location="login.html"
+}
+
+</script>
 
 
 <script type="module">
