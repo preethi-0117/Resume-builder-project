@@ -8,7 +8,7 @@
     <style>
     
 
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900%display-swap")
+    /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900%display-swap") */
 
 *{
     margin: 0;
@@ -181,24 +181,22 @@ let data_password=document.getElementById("password").value;
 
       }
       else{
-        alert("Registered Successfully")
-
-        window.location="login.html"
-
-      }
-
-const firebaseid= await addDoc(collection(db,"register"),{
+        const firebaseid= await addDoc(collection(db,"register"),{
 
   
-  name:data_name,
-  email:data_email,
-  password:data_password
-
-})
+name:data_name,
+email:data_email,
+password:data_password
       
 
- const eachid=firebaseid.id;
+
+
+})
+      const eachid=firebaseid.id
+
+ window.location=`login.html?id=${eachid}`
   
+}
 })
 
        </script>
