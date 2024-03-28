@@ -154,7 +154,7 @@ function removeData(){
 
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    import { getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
     
@@ -300,7 +300,7 @@ let experienc=""
 
 for (let each in resumeData.experience){
 experienc=experienc + `<tr>
-    <td> <input type="text" value=${resumeData.experience[each].company_name} class="experience_input" ></input></td>
+    <td> <input type="text" value=${resumeData.experience[each].company_name} class="company_input" ></input></td>
     <td> <input type="text" value=${resumeData.experience[each].year_of_experience} class="experience_input"></input></td>
    <tr>`
 
@@ -332,10 +332,10 @@ let proj=""
 
 for (let each in resumeData.projects){
     proj = proj + `<tr>
-        <td> <input type="text" value=${resumeData.projects[each].project_name} class="proj_input" ></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].duration} class="proj_input" ></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].team_size} class="proj_input"></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].organization} class="proj_input" ></input></td>
+        <td> <input type="text" value=${resumeData.projects[each].project_name} class="title_input" ></input></td>
+        <td> <input type="text" value=${resumeData.projects[each].duration} class="duration_input" ></input></td>
+        <td> <input type="text" value=${resumeData.projects[each].team_size} class="teamsize_input"></input></td>
+        <td> <input type="text" value=${resumeData.projects[each].organization} class="organization_input" ></input></td>
         </tr>`
 }
 document.getElementById("edit_project").innerHTML=proj
@@ -627,8 +627,30 @@ update_Data.addEventListener('click',async(e) => {
         docSnap.data()['education'][each]['percentage']=update_percent
         docSnap.data()['education'][each]['year']=update_year
     
+       
  
+        for (let each in docSnap.data()['experience']){
+        let update_company=document.querySelector(".company_input").value
+        let update_yearofexperience=document.querySelector(".experience_input").value
+     
 
+        docSnap.data()['experience'][each]['company_name']=update_company
+        docSnap.data()['experience'][each]['year_of_experience']=update_yearofexperience
+
+        
+   
+
+        for (let each in docSnap.data()['projects']){
+        let update_title=document.querySelector(".title_input").value
+        let update_duration=document.querySelector(".duration_input").value
+        let update_teamsize=document.querySelector(".team_size_input").value
+        let update_organization=document.querySelector(".organization_input").value
+
+
+        docSnap.data()['projects'][each]['project_name']=update_title
+        docSnap.data()['projects'][each]['duration']=update_duration
+        docSnap.data()['projects'][each]['team_size']=update_teamsize
+        docSnap.data()['projects'][each]['organization']=update_organization
 
     
 
@@ -654,15 +676,33 @@ update_Data.addEventListener('click',async(e) => {
                           ins_name:update_ins,
                           percentage:update_percent,
                           year:update_year
-               }]
+               }],
            
+        experience:[{
+                        company_name:update_company,
+                        year_of_experience:update_yearofexperience,
+        }],
+
+        projects:[{
+                        project_name:update_title,
+                        duration:update_duration,
+                        team_size:update_teamsize,
+                        organization:update_organization,
+        }],
     
 });
+}}
+        }
+
     }
 }
+    )
+})
+    
+    
 
-})
-})
+
+
 
 // getDoc(doc(db,"resumes",))
 

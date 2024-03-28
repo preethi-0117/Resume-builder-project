@@ -83,9 +83,11 @@ function gen(ele,key,p_key,index,c_key){
   else{
   myResume[key]=ele.value;
   }
+
+  
   // preview()
 }
-
+console.log(myResume)
 function AddArrValue(key,id){
   let value=document.getElementById(id).value;
   myResume[key].push(value)

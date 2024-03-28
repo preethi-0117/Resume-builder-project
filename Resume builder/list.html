@@ -18,7 +18,7 @@
         width:700px;
         height:400px;
         /* background:linear-gradient(90%,pink,blue,violet); */
-        background-image:url("img.jpg");
+        /*background-image:url("img.jpg");*/
         /* background-image: radial-gradient(circle, #e9accf, #f6afc1, #fcb5b4, #fbbdaa, #f6c6a4, #f7c4a2, #f9c29f, #fac09d, #ffb0a4, #ffa3b5, #f29ccb, #d39be2); */
         margin-left: 380px;
         position:relative;
@@ -94,7 +94,7 @@ const app = initializeApp(firebaseConfig);
    const db = getFirestore(app);
 
 
-  function getdoc(){
+  function getdatas(){
     let existing_data=localStorage.getItem("userdatas")
     let parse_data=JSON.parse(existing_data)
 
@@ -117,7 +117,7 @@ const app = initializeApp(firebaseConfig);
       }
 
       
-      getdoc()
+      getdatas()
 
         
 
@@ -146,7 +146,7 @@ const app = initializeApp(firebaseConfig);
     function deleteData(dataid){
 
     deleteDoc(doc(db,"resumes",dataid))
-    getdoc()
+    getdatas()
 
     }
    
