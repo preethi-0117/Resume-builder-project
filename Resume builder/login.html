@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="login.css" rel="stylesheet">
+
+
+       
+</head>
+<body>
+    <div class="wrapper">
+    <form>
+    <h1>Login</h1>
+    
+    
+   <div class="input-box">
+    
+    <input type="email" id="mail" placeholder="Email" required/>
+    <i class='bx bxs-envelope'></i>
+    </div>
+   <div class="input-box">
+   
+    <input type="password" id="pass" placeholder="Password" required/>
+    <i class='bx bxs-lock-alt'></i>
+    </div>
+    <!-- <button type="button" id="register">Register</button> -->
+   
+    <button type="button"  class="btn" id="loginThis">LOGIN</button>
+    <div class="register-link">
+      <p id="register">Dont have an account?   <a href="register.html"> Sign up</a></p>
+    </div>
+    </form>
+    </div>
+</body>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getFirestore, getDocs, collection, doc, addDoc, setDoc,  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
+      authDomain: "resumes-c23f8.firebaseapp.com",
+      projectId: "resumes-c23f8",
+      storageBucket: "resumes-c23f8.appspot.com",
+      messagingSenderId: "156434018847",
+      appId: "1:156434018847:web:acd23159dd1b48da375b2a"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+      // Initialize Cloud Firestore and get a reference to the service
+       const db = getFirestore(app);
+
+
+       let params=new URLSearchParams(document.location.search)
+       let id=params.get("id")
+
+
+loginThis.addEventListener('click',(e)=>{
+    getDocs(collection(db, "register")).then(logpage => {
+        logpage.forEach((each)=>{
+            let email=document.getElementById("mail").value;
+            let password=document.getElementById("pass").value;
+            
+            if(email=="" || password==""){
+                alert("Please fill empty Fields")
+                return
+                
+            }
+            let userdatas=false
+            logpage.forEach((each)=>{
+                let datas=each.data();
+
+               
+                if (email==datas.email && password==datas.password){
+                     userdatas={
+                        mail:datas.email,
+                        id:each.id,
+                        name:datas.name
+                    }
+
+                    localStorage.setItem("userdatas",JSON.stringify(userdatas))
+                    location=`userhidden.html?id=${each.id}`
+                }
+            })
+
+            if(!userdatas){
+
+                alert("your email or password incorrect")
+
+                }
+                  
+        })
+    })
+
+})
+
+// register.addEventListener('click',(e)=>{
+//     location="register.html"
+// })
+   
+        // docSnap.forEach((doc) =>  {
+        //     users.push({ ...doc.data(), id:doc.id })
+        // });
+        // console.log("Document data: ",users)
+        // })
+
+
+
+    // loginThis.addEventListener('click', (e) =>  {
+  
+    //     let e_mail=document.getElementById("mail").value
+    //     let pass_word=document.getElementById("pass").value
+
+    // const q =query(collection(db, "Register Page"), where(pass_word, "==", "password" && e_mail,"==","email"));
+
+    // getDocs(q).then(docSnap =>  {
+    //     let users= [];
+    //     docSnap.forEach((doc) =>  {
+    //         users.push({ ...doc.data(), id:doc.id })
+    //     });
+    //     alert(1)
+    //     console.log("Document data: ",users[0])
+    //     })
+
+    // })
+
+    
+       </script>
+</html>
