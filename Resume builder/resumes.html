@@ -3,195 +3,9 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-      <script src="resumes.js" type="text/javaScript"></script>
+      <script src="resumes.js" type="module"></script>
       <style>
-/* 
-#saveResume {
- background-color: #eee;
- border: none;
- padding: 1rem;
- font-size: 1rem;
- width: 10em;
- border-radius: 1rem;
- color: black;
- box-shadow: 0 0.4rem #dfd9d9;
- cursor: pointer;
-}
 
-
-#saveResume:active {
- color: white;
- box-shadow: 0 0.2rem #dfd9d9;
- transform: translateY(0.2rem);
-}
-
-
-#saveResume:hover:not(:disabled) {
- background:black;
- color: white;
- text-shadow: 0 0.1rem #bcb4b4;
-}
-
-
-#saveResume:disabled {
- cursor: auto;
- color: grey;
-}
-
-#logout{
-     
-
-}
-
-        *{
-            margin:0;
-            padding:0;
-        }
-
-      .main{
-        margin-left:25px;
-        margin-top: 10px;
-        display:flex;
-        
-    }
-    body{
-        background-color:plum ;
-        font-family:Arial, Helvetica, sans-serif;
-    }
-
-  input{
-    padding:5px 5px;
-  }
-    
-    
-    .input_container{
-        padding:5px;
-        font-weight: bold;
-        font-size: large;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-evenly;
-        align-items: center;
-        margin-left: -250px;
-        margin-left: 30px;
-        position:relative;
-       
-    }
-
-    div{
-        align-items:center;
-        justify-content:space-evenly;
-    }
-    
-    .code_preview{
-        color:purple;
-        
-    }
-    input{
-        padding-top:10px; 
-    }
-
-    .first{
-        margin-top: -30px;
-        margin-left: 350px;
-        width:100px;
-        height:30px
-
-    }
-
-label{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-input{
-    margin-top:-25px;
-    border-radius:20px;
-    padding:20px;
-  
-    
-}
-
-/* #saveResume {
-  background-color: #c2fbd7;
-  border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-  color: green;
-  cursor: pointer;
-  display: inline-block;
-  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 250ms;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-#saveResume:hover {
-  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-  transform: scale(1.05) rotate(-1deg);
-} */
-      
-/* h1{ */
- /* margin-left: 380px;*/
-  /* margin-top: 50px; 
- text-align: center;
-
- 
-} */
-    /* 
-    #saveResume{
-        background-color: cyan;
-        box-shadow: 0 0 5px cyan,
-        0 0 25px cyan;
-    }
-    
-    #saveResume:hover{
-        box-shadow: 0 0 5px cyan,
-        0 0 25px cyan , 0 0 50px cyan,
-        0 0 100px cyan, 0 0 200px cyan;
-    } */
-
-    /* .object-container{
-        display: flex;
-      
-    }
-   .main{
-    display:flex; */
-  
-    /* width:900px;
-    position:relative; */
-   /* }
-.sub{
-    background-color: white;
-    width:900px;
-    color:black;
-    margin-top: -985px; */
-
-    
-   
-/* }
-.code_preview{
-    background-color: black;
-    color:violet;
-    width:500px;
-    height:700px;
-    margin-bottom: 2110px;
-    overflow-y: scroll;
-}
-
-#title{
-    
-    margin-left: 700x;
-}
-
-hr{
-  margin-top: 70px;
-  margin-left: -170px;
-  
-}  */
 
 *{
     margin: 0;
@@ -453,14 +267,14 @@ h2{
    
 
         <div class="output">
-          <button type="button" id="saveResume" >Submit</button>
+          <button type="button" onclick="submitResume()">Submit</button>
        
         </div>
 
         
     </form>
 
-    <button type="button" onclick="removeData()" id="logout">Logout</button>
+    <button type="button" onclick="removeData()">Logout</button>
    
     </div>
 
@@ -476,46 +290,12 @@ function removeData(){
 
 </script>
 
-    <script type="module">
-
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { where, query, getFirestore, getDocs, collection, doc, addDoc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyC47oEKcVbL5T7R_F783tevqcFTH8R1EHo",
-          authDomain: "resumes-c23f8.firebaseapp.com",
-          projectId: "resumes-c23f8",
-          storageBucket: "resumes-c23f8.appspot.com",
-          messagingSenderId: "156434018847",
-          appId: "1:156434018847:web:acd23159dd1b48da375b2a"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-
-          // Initialize Cloud Firestore and get a reference to the service
-           const db = getFirestore(app);
-
-
-           document.getElementById("saveResume").addEventListener('click', async (e) =>{
-            let existing_data=localStorage.getItem("userdatas")
-            let parsed_data=JSON.parse(existing_data)
-            const docRef= await addDoc(collection(db, "resumes"),{...myResume,userid:parsed_data.id});
-            window.location=`list.html?resume_id=${docRef.id}`
+    <script src="firebaseconfig.js" type="module">
+          
         
-           
-           })
-
-   if(!localStorage.getItem("userdatas")){
-   window.location="login.html"
-
-           }
-        
-
+    if(!localStorage.getItem("userdatas")){
+        location="login.html"
+    }
 
     
           

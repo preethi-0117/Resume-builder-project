@@ -4,7 +4,6 @@ let myResume={
   hard_skills:[],
   soft_skills:[],
   
- 
     languages_known:[],
     hobbies:[],
   
@@ -65,14 +64,7 @@ let myResume={
   ]
 }
 
-
 function gen(ele,key,p_key,index,c_key){
-
-//  myresume.name=ele.value;
-//  document.getElementById("code").innerHTML=JSON.stringify(myresume)
-
-// myresume[key]=ele.value;
-// preview()
 
   if(p_key){
       myResume[p_key][key]=ele.value
@@ -84,85 +76,21 @@ function gen(ele,key,p_key,index,c_key){
   myResume[key]=ele.value;
   }
 
-  
-  // preview()
 }
 console.log(myResume)
 function AddArrValue(key,id){
   let value=document.getElementById(id).value;
   myResume[key].push(value)
   document.getElementById(id).value=""
-  // preview()
+ 
 }
-
-// function preview(){
-//   document.getElementById("code").innerHTML=JSON.stringify(myResume, null, 4)
-// }
 
 function add(key,id,parent){
 let a=document.getElementById(id).value;
 myResume[parent][key].push(a)
 document.getElementById(id).value=""
-// preview()
 
 }
-
-// function alertmsg(){
-//      alert(1)
-// }
-
-
-// let resumes=[]
-
-// function save(){
-//     resumes.push(myresume)
-//     let data=JSON.stringify(resumes)
-//     localStorage.setItem("details",data)
-  // window.location="resume1.html"
-  // document.getElementsByTagName.value=clear
-  // let getting=localStorage.getItem("details");
-  // let array=JSON.parse(getting);
-  // alert(getting)
-  // let  main=document.getElementById("sub");
-  // main.innerHTML=array 
-// }
-
-// function seeData(){
-//   let getting=localStorage.getItem("details");
-//   // let array=JSON.parse(getting);
-//    if (getting){
-//     let main=document.getElementById("sub");
-//     main.innerHTML=getting
-//     console.log(getting)
-  
-//    }
-//    else{
-//     alert(1)
-//    }
-// }
-
-
-//  let bye=document.getElementById("bye");
-//  bye.innerHTML="Welcome" + converted["userid"]
-
-
-//resume submit function
-
-// function saveData(){
-// if (!localStorage.getItem("detail")){//no data in local storage
-//   localStorage.setItem("detail",JSON.stringify([]))//add [] to stringify
-//   // alert(1)
-// }
-
-// let data=localStorage.getItem("detail")
-// let converted=JSON.parse(data)//convert to parse
-// let gets=[...converted,myResume]//add to myResume in existing localstorage item
-
-// localStorage.setItem("detail",JSON.stringify(gets))//store datas in localstorage 
-// window.location="list.html"
-// // alert(1)
-// }
-
 
 function Display(){
   let desk=localStorage.getItem("detail")
@@ -206,15 +134,12 @@ let desk=localStorage.getItem("detail")
        
      }
 
-
     }
 
     localStorage.setItem("detail",JSON.stringify(news))
     window.location="list.html"
     
 }
-
-//single values and personal details values update function
 
 function updateData(){
 
@@ -232,25 +157,6 @@ let update_phone=document.getElementById("editphone").value
 let update_summary=document.getElementById("editsummary").value
 let update_linkedin=document.getElementById("editlinkedin").value
 let update_github=document.getElementById("editgithub").value
-
-//  for (let each in convertItem){
-
-  
-
-//     let main=[]
-
-//       if (index==each){
-//           convertItem[index].title=update_title
-//           convertItem[index].name=update_name
-//           convertItem[index].email=update_email
-//           convertItem[index].address=update_address
-//       }
-
-
-//       main.push(convertItem[each])
-    
-
-//     }
 
   
 converted[index].title=update_title
@@ -304,23 +210,12 @@ for (let each of getting_softskill){
   list_items.push(each.value)
 }
 converted[index].soft_skills=list_items
- 
 
-
-
-
-
- document.getElementById("declare").innerHTML=converted[index].declaration
 
 localStorage.setItem("detail",JSON.stringify(converted))
 window.location="list.html"
 
 }
-
-
-
-
-
 
 // function setData(element,data_index,key_word,parent_key){// education,project details,experience update onkeyup function
 //   let parms = new URLSearchParams(document.location.search);
@@ -343,7 +238,6 @@ window.location="list.html"
 
 //   let desk = localStorage.getItem("details")
 //   let converted = JSON.parse(desk)
-
 
 
 //       converted[index][praent_key][data_index][key_word]=element.value;

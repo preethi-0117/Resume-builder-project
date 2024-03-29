@@ -610,6 +610,8 @@ update_Data.addEventListener('click',async(e) => {
     for (let each of update_language){
         editlanguage.push(each.value)
     }
+
+   
     
    
     getDoc(collection(db,"resumes",id)).then(docSnap=>{
