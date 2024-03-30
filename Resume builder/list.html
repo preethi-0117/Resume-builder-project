@@ -59,81 +59,14 @@
 </body>
 
 
-<script> 
 
-function removeData(){
-    localStorage.removeItem("userdatas")
-    location="login.html"
-}
+
+    
+    <script src="firebaseconfig.js" type="module"> </script>
+    
+<script type="module">
+
+  getDatas()
 
 </script>
-
-
-    <script src="firebaseconfig.js" type="module">
-
-
-
-
-  function getdatas(){
-    let existing_data=localStorage.getItem("userdatas")
-    let parse_data=JSON.parse(existing_data)
-
-   getDocs(query(collection(db,"resumes"),where("userid","==",parse_data.id))).then(docSnap => {
-   
-            let renderHTML=''
-            // let list=document.getElementById("list").value
-            docSnap.forEach((doc)=>{
-
-              
-                renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" id=update_btn">Edit</button></a></li>`
-            
-            document.getElementById("list").innerHTML=renderHTML
-          })
-
-        
-
-        })
-      }
-
-      
-      getdatas()
-
-        
-
-    //     let experience_length=converted[index].experience.length
-
-    //     let new_experience=`<tr>
-    //     <td> <input type="text" onkeyup="storeData(this,${experience_length},'company_name','experience')"></input></td>
-    //     <td> <input type="text" onkeyup="storeData(this,${experience_length},'year_of_experience','experience')"></input></td>
-    //    <tr>`
-
-    //     document.getElementById("edit_experience").innerHTML=exit_experience + new_experience
-
-    //     converted[index].experience[experience_length]={
-    //                                             company_name:"",
-    //                                             year_of_experience:""
-    //                                             }
-
-
-    //     localStorage.setItem("detail",JSON.stringify(converted))
- 
-    //  let params = new URLSearchParams(document.location.search);
-    // let id1 = params.get("id");
-
-    // deleteDoc(doc(db,"resumes",id1))
-
-    function deleteData(dataid){
-
-    deleteDoc(doc(db,"resumes",dataid))
-    getdatas()
-
-    }
-   
-
-   window.deleteData=deleteData
-
-
-  //  deleteData()
-          
-     </script>
 </html>

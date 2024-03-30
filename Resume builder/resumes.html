@@ -3,7 +3,7 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-      <script src="resumes.js" type="module"></script>
+      <script src="resumes.js" type="text/javaScript"></script>
       <style>
 
 
@@ -115,7 +115,7 @@ h2{
         
         <div class="input_container">
         <label>Name</label>
-        <input type="text" placeholder="Enter name" onkeyup="gen(this,'phone')"/>
+        <input type="text" placeholder="Enter name" onkeyup="gen(this,'name')"/>
         </div><br>
 
       
@@ -134,7 +134,7 @@ h2{
                 </div><br>
                 <div class="input_container">
                     <label>LinkedIn</label>
-                    <!-- <input type="text" placeholder="Enter LinkedIn"  onkeyup="gen(this,'linkedin')"><img class="img2" src="linkedin.png"></input> -->
+                    <input type="text" placeholder="Enter LinkedIn"  onkeyup="gen(this,'linkedin')"><img class="img2" src="linkedin.png"></input>
                     </div><br>
 
                     <div class="input_container">
@@ -281,25 +281,12 @@ h2{
     </div>
 
     </body>
-<script>
-    
-function removeData(){
-    localStorage.removeItem("userdatas")
-    location="login.html"
-}
 
-</script>
 
-    <script src="firebaseconfig.js" type="module">
-          
-        
-    if(!localStorage.getItem("userdatas")){
-        location="login.html"
-    }
+   
+    <script src="firebaseconfig.js" type="module"></script>
 
-    
-          
-      </script>
+
 
 
 </html>
