@@ -34,6 +34,7 @@ async function submitData(){
     
           if (data_name=="" || data_email=="" ||  data_password==""){
                 alert("Please fill empty fields")
+
           }
           else{
             const firebaseid= await addDoc(collection(db,"register"),{
@@ -561,13 +562,16 @@ function updateResume(){
 
 
 updateDoc(doc(db,"resumes",id),{
+
+
+
   title:update_title,
   name:update_name,
   email:update_email,
   address:update_address,
   phone:update_phone,
   summary:update_summary,
-  linedin:update_linkedin,
+  linkedin:update_linkedin,
   github:update_github,
   hard_skills:edithardskill,
   soft_skills:editsoftskill,
@@ -576,7 +580,7 @@ updateDoc(doc(db,"resumes",id),{
      languages_known:editlanguage,
      hobbies:edithobby,
 
-   education:editdata
+   education:editdata.education
 
 
     
@@ -652,19 +656,19 @@ function add_detail(id){
 
 
 
-  function preview(){
-    document.getElementById("code").innerHTML=JSON.stringify(myResume, null, 4)
-}
+//   function preview(){
+//     document.getElementById("code").innerHTML=JSON.stringify(myResume, null, 4)
+// }
 
 
 
-window.preview=preview
+// window.preview=preview
   
 
-  function storeData(ele,ind,key,p_key){
+  function storeData(ele,ele_index,key,par_key){
     // alert(1)
  
-   editdata[p_key][ind][key]=ele.value
+   editdata[par_key][ele_index][key]=ele.value
    console.log(editdata)
  
   }
