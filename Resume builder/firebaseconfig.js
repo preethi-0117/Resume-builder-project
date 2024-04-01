@@ -556,7 +556,7 @@ function updateResume(){
 
  
 
- 
+
 
 
 updateDoc(doc(db,"resumes",id),{
@@ -583,9 +583,10 @@ updateDoc(doc(db,"resumes",id),{
    projects:editdata.projects,
    certificates:editdata.certificates
 
-    
   
 });
+
+
 }
 
 
@@ -681,12 +682,7 @@ function add_detail(id){
 
 
 function createNewEducation(){
-    getDoc(collection(db,"resumes",id)).then(docSnap=>{
-        docSnap.forEach((doc)=>{
-           
-                let editdata=doc.data()
-
-
+  
     let tbody=document.getElementById("edit_educat").innerHTML
     let educate_length=editdata.education.length
     
@@ -699,8 +695,6 @@ function createNewEducation(){
    
      document.getElementById("edit_educat").innerHTML=tbody + new_education
    
-  
-
 
      editdata.education[educate_length]=
                                                   {
@@ -712,10 +706,89 @@ function createNewEducation(){
 
     
     }
-        )
-}
-    )
-    }
-
-
     window.createNewEducation=createNewEducation
+
+
+    
+
+
+
+
+
+function createNewProject(){
+  
+    let tbody=document.getElementById("edit_project").innerHTML
+    let project_length=editdata.projects.length
+    
+    
+    let new_project=`<tr><td> <input type="text" onkeyup="storeData(this,${project_length},'project_name','projects')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${project_length},'duration','projects')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${project_length},'team_size','projects')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${project_length},'organization','projects')"/></td>
+            </tr>`
+   
+     document.getElementById("edit_project").innerHTML=tbody + new_project
+   
+
+     editdata.projects[project_length]=
+                                                  {
+                                                  project_name:"",
+                                                  duration:"",
+                                                  team_size:"",
+                                                  organization:""
+                                              }
+
+    
+    }
+    window.createNewProject=createNewProject
+
+
+    function createNewExperience(){
+  
+        let tbody=document.getElementById("edit_experience").innerHTML
+        let experience_length=editdata.experience.length
+        
+        
+        let new_experience=`<tr><td> <input type="text" onkeyup="storeData(this,${experience_length},'company_name','experience')"/></td>
+                     <td> <input type="text" onkeyup="storeData(this,${experience_length},'year_of_experience','experience')"/></td>
+                </tr>`
+       
+         document.getElementById("edit_experience").innerHTML=tbody + new_experience
+       
+    
+         editdata.experience[experience_length]=
+                                                      {
+                                                      company_name:"",
+                                                      year_of_experience:"",
+                                                      
+                                                  }
+    
+        
+        }
+        window.createNewExperience=createNewExperience
+
+
+        
+    function createNewCertificates(){
+  
+        let tbody=document.getElementById("edit_experience").innerHTML
+        let certificate_length=editdata.certificates.length
+        
+        
+        let new_certificates=`<tr><td> <input type="text" onkeyup="storeData(this,${certificate_length},'course_name','certificates')"/></td>
+                     <td> <input type="text" onkeyup="storeData(this,${certificate_length},'year','certificates')"/></td>
+                </tr>`
+       
+         document.getElementById("edit_certify").innerHTML=tbody + new_certificates
+       
+    
+         editdata.certificates[certificate_length]=
+                                                      {
+                                                      course_name:"",
+                                                      year:"",
+                                                      
+                                                  }
+    
+        
+        }
+        window.createNewCertificates=createNewCertificates
