@@ -219,22 +219,23 @@ function getResumeDatas(){
      getDocs(collection(db,"resumes")).then(docSnap=>{
          docSnap.forEach((doc)=>{
              if(id==doc.id){
-                 let resumeData=doc.data()
-                 document.getElementById("title").innerHTML= resumeData.title
-                 document.getElementById("name").innerHTML= resumeData.name
-                 document.getElementById("email").innerHTML= resumeData.email
-                 document.getElementById("phone").innerHTML= resumeData.phone
-                 document.getElementById("address").innerHTML= resumeData.address
+                 let editdata=doc.data()
+                 editdata=editdata
+                 document.getElementById("title").innerHTML= editdata.title
+                 document.getElementById("name").innerHTML= editdata.name
+                 document.getElementById("email").innerHTML= editdata.email
+                 document.getElementById("phone").innerHTML= editdata.phone
+                 document.getElementById("address").innerHTML= editdata.address
                
-                 document.getElementById("summary").innerHTML= resumeData.summary
-                 document.getElementById("linkedin").innerHTML= resumeData.linkedin
-                 document.getElementById("github").innerHTML= resumeData.github
+                 document.getElementById("summary").innerHTML= editdata.summary
+                 document.getElementById("linkedin").innerHTML= editdata.linkedin
+                 document.getElementById("github").innerHTML= editdata.github
                  
                 
                 
  let trs=""
  
- for (let each of resumeData.education){
+ for (let each of editdata.education){
      trs=trs + `<tr> 
          <td> ${each.course_name}</td>
          <td> ${each.ins_name}</td>
@@ -249,7 +250,7 @@ function getResumeDatas(){
  
  let certify="" 
  
- for (let each of resumeData.certificates){
+ for (let each of editdata.certificates){
      certify= certify + `<tr>
          <td>${each.course_name}</td>
          <td>${each.year}</td>
@@ -262,7 +263,7 @@ function getResumeDatas(){
  
  let project=""
  
- for (let each of resumeData.projects){
+ for (let each of editdata.projects){
      project=project + `<tr>
          <td>${each.project_name}</td>
          <td>${each.duration}</td>
@@ -278,7 +279,7 @@ function getResumeDatas(){
  
  let experienced=""
  
- for (let each of resumeData.experience){
+ for (let each of editdata.experience){
      experienced=experienced + `<tr>
          <td>${each.company_name}</td>
          <td>${each.year_of_experience}</td>
@@ -291,7 +292,7 @@ function getResumeDatas(){
  
  let hardskill=""
  
- for (let each of resumeData.hard_skills){
+ for (let each of editdata.hard_skills){
      hardskill= hardskill + `<li>${each}</li>`
  }
  
@@ -299,7 +300,7 @@ function getResumeDatas(){
  
  let softskill=""
  
- for (let each of resumeData.soft_skills){
+ for (let each of editdata.soft_skills){
      softskill= softskill + `<li>${each}</li>`
  }
  
@@ -309,7 +310,7 @@ function getResumeDatas(){
  
  let hobby=""
  
- for (let each of resumeData.hobbies){
+ for (let each of editdata.hobbies){
      hobby= hobby + `<li>${each}</li>`
  }
  
@@ -318,7 +319,7 @@ function getResumeDatas(){
  //to show language in view page
  
  let language=""
- for (let each of resumeData.languages_known){
+ for (let each of editdata.languages_known){
      language=language + `<li>${each}</li>`
  }
  document.getElementById("view_language").innerHTML=language
@@ -379,25 +380,26 @@ function getResumeDatas(){
     docSnap.forEach((doc)=>{
         if(id==doc.id){
             let resumeData=doc.data()
+            editdata=resumeData
 
     //single values show in input box
 
-    document.getElementById("input").value=resumeData.title
+    document.getElementById("input").value=editdata.title
         
-    document.getElementById("changename").value=resumeData.name
-    document.getElementById("editemail").value=resumeData.email
-    document.getElementById("editaddress").value=resumeData.address
-    document.getElementById("editphone").value=resumeData.phone
-    document.getElementById("editsummary").value=resumeData.summary
-    document.getElementById("editlinkedin").value=resumeData.linkedin
-    document.getElementById("editgithub").value=resumeData.github
+    document.getElementById("changename").value=editdata.name
+    document.getElementById("editemail").value=editdata.email
+    document.getElementById("editaddress").value=editdata.address
+    document.getElementById("editphone").value=editdata.phone
+    document.getElementById("editsummary").value=editdata.summary
+    document.getElementById("editlinkedin").value=editdata.linkedin
+    document.getElementById("editgithub").value=editdata.github
   
 
     //   //to show skills value in input box  
 
 let hardskill_add="";
 
-for (let each of resumeData.hard_skills){
+for (let each of editdata.hard_skills){
      hardskill_add= hardskill_add + `<input type="text" value="${each}" class="hardskill_input"></input>`
     }
 document.getElementById("edit_hardskill").innerHTML=hardskill_add
@@ -405,7 +407,7 @@ document.getElementById("edit_hardskill").innerHTML=hardskill_add
 
 let softskill_add="";
 
-for (let each of resumeData.soft_skills){
+for (let each of editdata.soft_skills){
      softskill_add= softskill_add + `<input type="text" value="${each}" class="softskill_input"></input>`
     }
 document.getElementById("edit_softskill").innerHTML=softskill_add
@@ -416,7 +418,7 @@ document.getElementById("edit_softskill").innerHTML=softskill_add
 
 let language=""
 
-for (let each of resumeData.languages_known){
+for (let each of editdata.languages_known){
     language =language + `<input type="text" value="${each}" class="language_input"></input>`
     
 }
@@ -429,7 +431,7 @@ document.getElementById("edit_language").innerHTML=language
 
 let hobbie=""
 
-for (let each of resumeData.hobbies){
+for (let each of editdata.hobbies){
     hobbie= hobbie + `<input type="text" value="${each}" class="hobby_input"></input>`
 }
 document.getElementById("edit_hobby").innerHTML=hobbie
@@ -440,12 +442,12 @@ document.getElementById("edit_hobby").innerHTML=hobbie
 
 let educate=""
 
-for (let each in resumeData.education){
+for (let each in editdata.education){
     educate=educate + `<tr> 
-        <td> <input type="text" value=${resumeData.education[each].course_name} class="educat_input" onkeyup="storeData(this,${each},'course_name','education')"></input></td>
-        <td> <input type="text" value=${resumeData.education[each].ins_name} class="educat_input" onkeyup="storeData(this,${each},'ins_name','education')"></input></td>
-        <td> <input type="text" value=${resumeData.education[each].percentage} class="educat_input" onkeyup="storeData(this,${each},'percentage','education')"></input></td>
-        <td> <input type="text" value=${resumeData.education[each].year} class="educat_input" onkeyup="storeData(this,${each},'year','education')"></input></td>
+        <td> <input type="text" value=${editdata.education[each].course_name} class="educat_input" onkeyup="storeData(this,${each},'course_name','education')"></input></td>
+        <td> <input type="text" value=${editdata.education[each].ins_name} class="educat_input" onkeyup="storeData(this,${each},'ins_name','education')"></input></td>
+        <td> <input type="text" value=${editdata.education[each].percentage} class="educat_input" onkeyup="storeData(this,${each},'percentage','education')"></input></td>
+        <td> <input type="text" value=${editdata.education[each].year} class="educat_input" onkeyup="storeData(this,${each},'year','education')"></input></td>
         </tr>`
         
     }
@@ -457,10 +459,10 @@ for (let each in resumeData.education){
 
 let experienc=""
 
-for (let each in resumeData.experience){
+for (let each in editdata.experience){
 experienc=experienc + `<tr>
-    <td> <input type="text" value=${resumeData.experience[each].company_name} class="company_input" ></input></td>
-    <td> <input type="text" value=${resumeData.experience[each].year_of_experience} class="experience_input"></input></td>
+    <td> <input type="text" value=${editdata.experience[each].company_name} class="company_input" onkeyup="storeData(this,${each},'company_name','experience')"></input></td>
+    <td> <input type="text" value=${editdata.experience[each].year_of_experience} class="company_input" onkeyup="storeData(this,${each},'year_of_experience','experience')"></input></td>
    <tr>`
 
 }
@@ -477,12 +479,12 @@ document.getElementById("edit_experience").innerHTML=experienc
 
 let proj=""
 
-for (let each in resumeData.projects){
+for (let each in editdata.projects){
     proj = proj + `<tr>
-        <td> <input type="text" value=${resumeData.projects[each].project_name} class="title_input" ></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].duration} class="duration_input" ></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].team_size} class="teamsize_input"></input></td>
-        <td> <input type="text" value=${resumeData.projects[each].organization} class="organization_input" ></input></td>
+        <td> <input type="text" value=${editdata.projects[each].project_name} class="project_input" onkeyup="storeData(this,${each},'project_name','projects')"></input></td>
+        <td> <input type="text" value=${editdata.projects[each].duration} class="project_input" onkeyup="storeData(this,${each},'duration','projects')"></input></td>
+        <td> <input type="text" value=${editdata.projects[each].team_size} class="project_input" onkeyup="storeData(this,${each},'team_size','projects')"></input></td>
+        <td> <input type="text" value=${editdata.projects[each].organization} class="project_input" onkeyup="storeData(this,${each},'organization','projects')"></input></td>
         </tr>`
 }
 document.getElementById("edit_project").innerHTML=proj
@@ -492,12 +494,12 @@ document.getElementById("edit_project").innerHTML=proj
 
 let certificat=""
 
-for (let each in resumeData.certificates){
+for (let each in editdata.certificates){
 
 certificat=certificat + `<tr> 
    
-    <td> <input type="text" value=${resumeData.certificates[each].course_name} class="certify_input" ></input></td>
-    <td> <input type="text" value=${resumeData.certificates[each].year} class="certify_input" ></input></td>
+    <td> <input type="text" value=${editdata.certificates[each].course_name} class="certify_input" onkeyup="storeData(this,${each},'course_name','certificates')" ></input></td>
+    <td> <input type="text" value=${editdata.certificates[each].year} class="certify_input" onkeyup="storeData(this,${each},'year','certificates')"></input></td>
     </tr>`
     
 }
@@ -553,11 +555,7 @@ function updateResume(){
   }
 
  
-// let update_education=document.getElementsByClassName("educat_input")
-// let edit_educate=[]
-// for (let each of update_education){
-//     edit_educate.push(each.value)
-// }
+
  
 
 
@@ -580,8 +578,10 @@ updateDoc(doc(db,"resumes",id),{
      languages_known:editlanguage,
      hobbies:edithobby,
 
-   education:editdata.education
-
+   education:editdata.education,
+   experience:editdata.experience,
+   projects:editdata.projects,
+   certificates:editdata.certificates
 
     
   
@@ -680,42 +680,42 @@ function add_detail(id){
 
 
 
-// function createNewEducation(){
-//     getDoc(collection(db,"resumes",id)).then(docSnap=>{
-//         docSnap.forEach((doc)=>{
+function createNewEducation(){
+    getDoc(collection(db,"resumes",id)).then(docSnap=>{
+        docSnap.forEach((doc)=>{
            
-//                 let resumeData=doc.data()
+                let editdata=doc.data()
 
 
-//     let tbody=document.getElementById("edit_educat").innerHTML
-//     let educate_length=resumeData.education.length
+    let tbody=document.getElementById("edit_educat").innerHTML
+    let educate_length=editdata.education.length
     
     
-//     let new_education=`<tr><td> <input type="text" onkeyup="storeData(this,${educate_length},'course_name','education')"/></td>
-//                  <td> <input type="text" onkeyup="storeData(this,${educate_length},'ins_name','education')"/></td>
-//                  <td> <input type="text" onkeyup="storeData(this,${educate_length},'percentage','education')"/></td>
-//                  <td> <input type="text" onkeyup="storeData(this,${educate_length},'year','education')"/></td>
-//             </tr>`
+    let new_education=`<tr><td> <input type="text" onkeyup="storeData(this,${educate_length},'course_name','education')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${educate_length},'ins_name','education')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${educate_length},'percentage','education')"/></td>
+                 <td> <input type="text" onkeyup="storeData(this,${educate_length},'year','education')"/></td>
+            </tr>`
    
-//      document.getElementById("edit_educat").innerHTML=tbody + new_education
+     document.getElementById("edit_educat").innerHTML=tbody + new_education
    
   
 
 
-//      resumeData.education[educate_length]=
-//                                                   {
-//                                                   course_name:"",
-//                                                   ins_name:"",
-//                                                   percentage:"",
-//                                                   year:""
-//                                               }
+     editdata.education[educate_length]=
+                                                  {
+                                                  course_name:"",
+                                                  ins_name:"",
+                                                  percentage:"",
+                                                  year:""
+                                              }
 
     
-//     }
-//         )
-// }
-//     )
-//     }
+    }
+        )
+}
+    )
+    }
 
 
-//     window.createNewEducation=createNewEducation
+    window.createNewEducation=createNewEducation
