@@ -219,8 +219,8 @@ function getResumeDatas(){
      getDocs(collection(db,"resumes")).then(docSnap=>{
          docSnap.forEach((doc)=>{
              if(id==doc.id){
-                 let editdata=doc.data()
-                 editdata=editdata
+                 let resumeData=doc.data()
+                 editdata=resumeData
                  document.getElementById("title").innerHTML= editdata.title
                  document.getElementById("name").innerHTML= editdata.name
                  document.getElementById("email").innerHTML= editdata.email
@@ -237,13 +237,14 @@ function getResumeDatas(){
  
  for (let each of editdata.education){
      trs=trs + `<tr> 
-         <td> ${each.course_name}</td>
-         <td> ${each.ins_name}</td>
-         <td> ${each.percentage}</td>
-         <td> ${each.year}</td>
+         <td>${each.course_name}</td>
+         <td>${each.ins_name}</td>
+         <td>${each.percentage}</td>
+         <td>${each.year}</td>
          </tr>`
          
      }
+     
      document.getElementById("trs").innerHTML=trs
  
  // //to show certification in view html
@@ -444,10 +445,10 @@ let educate=""
 
 for (let each in editdata.education){
     educate=educate + `<tr> 
-        <td> <input type="text" value=${editdata.education[each].course_name} class="educat_input" onkeyup="storeData(this,${each},'course_name','education')"></input></td>
-        <td> <input type="text" value=${editdata.education[each].ins_name} class="educat_input" onkeyup="storeData(this,${each},'ins_name','education')"></input></td>
-        <td> <input type="text" value=${editdata.education[each].percentage} class="educat_input" onkeyup="storeData(this,${each},'percentage','education')"></input></td>
-        <td> <input type="text" value=${editdata.education[each].year} class="educat_input" onkeyup="storeData(this,${each},'year','education')"></input></td>
+        <td> <input type="text" value="${editdata.education[each].course_name}" class="educat_input" onkeyup="storeData(this,${each},'course_name','education')"></input></td>
+        <td> <input type="text" value="${editdata.education[each].ins_name}" class="educat_input" onkeyup="storeData(this,${each},'ins_name','education')"></input></td>
+        <td> <input type="text" value="${editdata.education[each].percentage}" class="educat_input" onkeyup="storeData(this,${each},'percentage','education')"></input></td>
+        <td> <input type="text" value="${editdata.education[each].year}" class="educat_input" onkeyup="storeData(this,${each},'year','education')"></input></td>
         </tr>`
         
     }
@@ -461,8 +462,8 @@ let experienc=""
 
 for (let each in editdata.experience){
 experienc=experienc + `<tr>
-    <td> <input type="text" value=${editdata.experience[each].company_name} class="company_input" onkeyup="storeData(this,${each},'company_name','experience')"></input></td>
-    <td> <input type="text" value=${editdata.experience[each].year_of_experience} class="company_input" onkeyup="storeData(this,${each},'year_of_experience','experience')"></input></td>
+    <td> <input type="text" value="${editdata.experience[each].company_name}" class="company_input" onkeyup="storeData(this,${each},'company_name','experience')"></input></td>
+    <td> <input type="text" value="${editdata.experience[each].year_of_experience}" class="company_input" onkeyup="storeData(this,${each},'year_of_experience','experience')"></input></td>
    <tr>`
 
 }
@@ -481,10 +482,10 @@ let proj=""
 
 for (let each in editdata.projects){
     proj = proj + `<tr>
-        <td> <input type="text" value=${editdata.projects[each].project_name} class="project_input" onkeyup="storeData(this,${each},'project_name','projects')"></input></td>
-        <td> <input type="text" value=${editdata.projects[each].duration} class="project_input" onkeyup="storeData(this,${each},'duration','projects')"></input></td>
-        <td> <input type="text" value=${editdata.projects[each].team_size} class="project_input" onkeyup="storeData(this,${each},'team_size','projects')"></input></td>
-        <td> <input type="text" value=${editdata.projects[each].organization} class="project_input" onkeyup="storeData(this,${each},'organization','projects')"></input></td>
+        <td> <input type="text" value="${editdata.projects[each].project_name}" class="project_input" onkeyup="storeData(this,${each},'project_name','projects')"></input></td>
+        <td> <input type="text" value="${editdata.projects[each].duration}" class="project_input" onkeyup="storeData(this,${each},'duration','projects')"></input></td>
+        <td> <input type="text" value="${editdata.projects[each].team_size}" class="project_input" onkeyup="storeData(this,${each},'team_size','projects')"></input></td>
+        <td> <input type="text" value="${editdata.projects[each].organization}" class="project_input" onkeyup="storeData(this,${each},'organization','projects')"></input></td>
         </tr>`
 }
 document.getElementById("edit_project").innerHTML=proj
@@ -498,8 +499,8 @@ for (let each in editdata.certificates){
 
 certificat=certificat + `<tr> 
    
-    <td> <input type="text" value=${editdata.certificates[each].course_name} class="certify_input" onkeyup="storeData(this,${each},'course_name','certificates')" ></input></td>
-    <td> <input type="text" value=${editdata.certificates[each].year} class="certify_input" onkeyup="storeData(this,${each},'year','certificates')"></input></td>
+    <td> <input type="text" value="${editdata.certificates[each].course_name}" class="certify_input" onkeyup="storeData(this,${each},'course_name','certificates')" ></input></td>
+    <td> <input type="text" value="${editdata.certificates[each].year}" class="certify_input" onkeyup="storeData(this,${each},'year','certificates')"></input></td>
     </tr>`
     
 }
@@ -518,7 +519,7 @@ window.viewResumeEdit=viewResumeEdit
 
 
 
-function updateResume(){
+async function updateResume(){
 
   let params = new URLSearchParams(document.location.search);
   let id = params.get("id");
@@ -558,8 +559,7 @@ function updateResume(){
 
 
 
-
-updateDoc(doc(db,"resumes",id),{
+await updateDoc(doc(db,"resumes",id),{
 
 
 
@@ -581,10 +581,16 @@ updateDoc(doc(db,"resumes",id),{
    education:editdata.education,
    experience:editdata.experience,
    projects:editdata.projects,
-   certificates:editdata.certificates
+   certificates:editdata.certificates,
+
+
+
 
   
-});
+}
+);
+   location="list.html"
+
 
 
 }
@@ -743,6 +749,8 @@ function createNewProject(){
     window.createNewProject=createNewProject
 
 
+
+
     function createNewExperience(){
   
         let tbody=document.getElementById("edit_experience").innerHTML
@@ -766,6 +774,7 @@ function createNewProject(){
         
         }
         window.createNewExperience=createNewExperience
+        
 
 
         
