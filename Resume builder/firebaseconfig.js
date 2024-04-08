@@ -176,8 +176,10 @@ function getDatas(){
           docSnap.forEach((doc)=>{
 
             
-              renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" onclick="viewResumeEdit()">Edit</button></a></li>`
-          
+            //   renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" onclick="viewResumeEdit()">Edit</button></a></li>`
+                 
+                renderHTML=renderHTML+ `<li ><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" class="btn btn-dark" onclick="deleteData('${doc.id}')">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" class="btn btn-light" onclick="viewResumeEdit()">Edit</button></a></li>`
+
           document.getElementById("list").innerHTML=renderHTML
         })
 
@@ -780,7 +782,7 @@ function createNewProject(){
         
     function createNewCertificates(){
   
-        let tbody=document.getElementById("edit_experience").innerHTML
+        let tbody=document.getElementById("edit_certify").innerHTML
         let certificate_length=editdata.certificates.length
         
         
@@ -797,7 +799,10 @@ function createNewProject(){
                                                       year:"",
                                                       
                                                   }
-    
+        //  tbody.insertAdjacentHTML('beforeend',new_certificates)
         
         }
+
+      
+
         window.createNewCertificates=createNewCertificates
