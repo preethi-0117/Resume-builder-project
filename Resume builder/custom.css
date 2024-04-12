@@ -84,6 +84,7 @@
 .mainhead{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 /* .navbar-text{
@@ -99,3 +100,13 @@
 
 
   
+.navmenu{
+
+    margin-left: 50px;
+    /* background-color:pink; */
+}
+
+/* .navbar bg-body-tertiary{
+    background-color:pink;
+} */
+

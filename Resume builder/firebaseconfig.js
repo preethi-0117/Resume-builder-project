@@ -175,11 +175,14 @@ function getDatas(){
           // let list=document.getElementById("list").value
           docSnap.forEach((doc)=>{
 
-            
+            renderHTML= renderHTML + `<tr><td><a href="view.html?id=${doc.id}">
+            ${doc.data().title}</a></td><td><button type="button" class="btn btn-danger" onclick="deleteData('${doc.id}')">Delete</button></td>
+            <td><a href="edit.html?id=${doc.id}"><button class="btn btn-info" onclick="viewResumeEdit()>Edit</button></a></td></tr>`
             //   renderHTML=renderHTML+ `<li class="list"><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" onclick="deleteData('${doc.id}')" class="del">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" onclick="viewResumeEdit()">Edit</button></a></li>`
                  
-                renderHTML=renderHTML+ `<li ><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" class="btn btn-dark" onclick="deleteData('${doc.id}')">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" class="btn btn-light" onclick="viewResumeEdit()">Edit</button></a></li>`
-
+                // renderHTML=renderHTML+ `<li ><a href="view.html?id=${doc.id}">${doc.data().title}</a><button type="button" class="btn btn-dark" onclick="deleteData('${doc.id}')">Delete</button><a href="edit.html?id=${doc.id}"><button type="button" class="btn btn-light" onclick="viewResumeEdit()">Edit</button></a></li>`
+                
+                // renderHTML=renderHTML + `<th scope="row"><a href="view.html?id=${doc.id}">${doc.data().title}</a><td type="button" class="btn btn-dark" onclick="deleteData('${doc.id}')">Delete</td><a href="edit.html?id=${doc.id}"><td type="button" class="btn btn-light" onclick="viewResume()">Edit</td></a><th>`
           document.getElementById("list").innerHTML=renderHTML
         })
 
